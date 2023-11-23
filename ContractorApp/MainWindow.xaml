@@ -1,0 +1,90 @@
+﻿<Window x:Class="ContractorApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ContractorApp"
+        mc:Ignorable="d"
+       Title="Recrutment App" Width="600" Height="600">
+    <Grid>
+        <TabControl>
+            <!-- Contractor Tab -->
+            <TabItem Header="Contractor">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <Label Content="First Name:" Grid.Row="0" />
+                    <TextBox x:Name="Text_First_Name" Grid.Row="0" Width="200" />
+
+                    <Label Content="Last Name" Grid.Row="1" />
+                    <TextBox x:Name="Text_Last_Name" Grid.Row="1" Width="200" />
+
+                    <Label Content="Available Start Date:" Grid.Row="2" />
+                    <DatePicker x:Name="Text_Start_Date" Grid.Row="2" Width="200" />
+
+                    <Label Content="Hourly Wage:" Grid.Row="3" />
+                    <TextBox x:Name="Text_Hourly_Wage" Grid.Row="3" Width="200" />
+
+                    <Button Click="Button_Contractor" Content="Add Contractor" Grid.Row="4" Width="200"/>
+
+                    <ListBox Grid.Row="5" x:Name="List_Box_Contractor" />
+
+                    <Button Click="Button_RemoveContractor" Content="Remove Contractor" Grid.Row="6" Width="200"/>
+                </Grid>
+            </TabItem>
+
+            <!-- Job Tab -->
+            <TabItem Header="Job">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <Label Content="Title:" Grid.Row="0" Grid.ColumnSpan="2" />
+                    <TextBox x:Name="Text_Title" Grid.Row="0" Width="200" />
+
+                    <Label Content="Date:" Grid.Row="1" Grid.ColumnSpan="2" />
+                    <DatePicker x:Name="Text_Date" Grid.Row="1" Width="200"  />
+
+                    <Label Content="Cost:" Grid.Row="2" Grid.ColumnSpan="2" />
+                    <TextBox x:Name="Text_Cost" Grid.Row="2" Width="200"/>
+
+                    <Button Click="Button_Jobs" Content="Add Job" Grid.Row="3" Width="200"/>
+
+                    <ListBox Grid.Row="4" x:Name="List_Box_Jobs" Grid.ColumnSpan="2" />
+
+                    <Button Click="Button_AssignJob" Content="Assign Job" Grid.Row="5" Width="200" HorizontalAlignment="Left"/>
+                    
+                    <Button Click="Button_CompleteJob" Content="Complete Job" Grid.Row="5" Width="200" HorizontalAlignment="Right"/>
+                    
+                    <Button Click="Button_JobByCost" Content="Search Job Cost" Grid.Row="6" Width="200" HorizontalAlignment="Left"/>
+                    
+                    <TextBox x:Name="Text_Low" Grid.Row="6" Width="150" HorizontalAlignment="Center"/>
+                    <Label Content="-" Grid.Row="5" HorizontalAlignment="Left" Margin="403,20,0,0" Grid.RowSpan="2"/>
+                    <TextBox x:Name="Text_High" Grid.Row="6" Width="150" HorizontalAlignment="Right"/>
+                    
+                    
+                    <Button Click="Button_AllJobs" Content="Search All Jobs" Grid.Row="7" Width="200" HorizontalAlignment="Right"/>
+
+                    <Button Click="Button_UnassignedJobs" Content="Search Unassigneed Jobs" Grid.Row="7" Width="200" HorizontalAlignment="Left"/>
+
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
