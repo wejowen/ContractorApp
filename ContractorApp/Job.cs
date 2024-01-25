@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ContractorApp
 {
-    class Job
+    public class Job
     {
         public string Title { get; set; }
         public DateTime Date { get; set; }

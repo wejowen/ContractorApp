@@ -53,7 +53,7 @@ namespace ContractorApp
                 contractorInfoList.Add($"Name: {contractor.FirstName} {contractor.LastName}, Start Date: {dateFormat}, Hourly Wage: {contractor.HourlyWage}");
             }
 
-            // Set the ItemsSource of the ListBox to the list of formatted contractor information
+            // Displaying Data in the list box
             List_Box_Contractor.ItemsSource = contractorInfoList;
         }
 
@@ -61,15 +61,13 @@ namespace ContractorApp
         {
             List<Job> retrievedJobs = recruitmentSystem.GetJobs();
             List<string> jobInfoList = new List<string>();
-
+            
             foreach (var job in retrievedJobs)
             {
-                //Converting DateTime to string of date only in specified format
                 string dateFormat = job.Date.ToString("dd/MM/yyyy");
                 jobInfoList.Add($"Job Title: {job.Title}, Date: {dateFormat}, Cost: {job.Cost}, Completed: {job.Completed}, Contractor Assigned: {job.ContractorAssigned}");
             }
 
-            // Set the ItemsSource of the ListBox to the list of formatted contractor information
             List_Box_Jobs.ItemsSource = jobInfoList;
         }
 
@@ -80,10 +78,9 @@ namespace ContractorApp
             DateTime startDate = Text_Start_Date.SelectedDate ?? DateTime.Now; //Date is today if unselected/when opened
             double hourlyWage;
 
-            // Try parsing the hourly wage
+            // parsing the hourly wage
             if (double.TryParse(Text_Hourly_Wage.Text, out hourlyWage))
             {
-                // Calling AddContractor method to add them once 
                 recruitmentSystem.AddContractor(firstName, lastName, startDate, hourlyWage);
             }
             else
@@ -95,7 +92,6 @@ namespace ContractorApp
         }
         private void Button_RemoveContractor(object sender, RoutedEventArgs e)
         {
-            // Get the selected index from the ListBox
             int selectedContractorIndex = List_Box_Contractor.SelectedIndex;
 
             if (selectedContractorIndex >= 0)
@@ -134,7 +130,7 @@ namespace ContractorApp
             RefreshJobList();
 
         }
-
+      
         public void Button_AssignJob(object sender, RoutedEventArgs e)
         {
 
@@ -147,10 +143,8 @@ namespace ContractorApp
                 Height = 600,
             };
 
-            // Get the list of available contractors using your RecruitmentSystem method
             List<Contractor> availableContractors = recruitmentSystem.GetAvailableContractors();
 
-            // Update the ListBox in UserControl with the list of available contractors
             myUserControl.UpdateAvailableContractorsList(availableContractors);
 
 
@@ -168,7 +162,7 @@ namespace ContractorApp
             RefreshJobList();  
         }
 
-        //Need to unnassign contractor as well, new function? 
+        //Completes job and wipes job assigned data, making contractor available again
         public void Button_CompleteJob(object sender, RoutedEventArgs e)
         {
             int selectedJobIndex = List_Box_Jobs.SelectedIndex;
@@ -196,12 +190,10 @@ namespace ContractorApp
 
             foreach (var job in retrievedJobs)
             {
-                //Converting DateTime to string of date only in specified format
                 string dateFormat = job.Date.ToString("dd/MM/yyyy");
                 jobInfoList.Add($"Job Title: {job.Title}, Date: {dateFormat}, Cost: {job.Cost}, Completed: {job.Completed}, Contractor Assigned: {job.ContractorAssigned}");
             }
 
-            // Set the ItemsSource of the ListBox to the list of formatted contractor information
             List_Box_Jobs.ItemsSource = jobInfoList;
         }
 
@@ -220,10 +212,8 @@ namespace ContractorApp
                 {
                     List<Job> retrievedJobs = recruitmentSystem.GetJobByCost(lowCost, highCost);
 
-
                     foreach (var job in retrievedJobs)
                     {
-                        //Converting DateTime to string of date only in specified format
                         string dateFormat = job.Date.ToString("dd/MM/yyyy");
                         jobInfoList.Add($"Job Title: {job.Title}, Date: {dateFormat}, Cost: {job.Cost}, Completed: {job.Completed}, Contractor Assigned: {job.ContractorAssigned}");
                     }

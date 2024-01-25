@@ -35,7 +35,7 @@
 
                     <Button Click="Button_Contractor" Content="Add Contractor" Grid.Row="4" Width="200"/>
 
-                    <ListBox Grid.Row="5" x:Name="List_Box_Contractor" />
+                    <ListBox Grid.Row="5" x:Name="List_Box_Contractor"/>
 
                     <Button Click="Button_RemoveContractor" Content="Remove Contractor" Grid.Row="6" Width="200"/>
                 </Grid>
@@ -81,7 +81,7 @@
                     
                     <Button Click="Button_AllJobs" Content="Search All Jobs" Grid.Row="7" Width="200" HorizontalAlignment="Right"/>
 
-                    <Button Click="Button_UnassignedJobs" Content="Search Unassigneed Jobs" Grid.Row="7" Width="200" HorizontalAlignment="Left"/>
+                    <Button Click="Button_UnassignedJobs" Content="Search Unassigned Jobs" Grid.Row="7" Width="200" HorizontalAlignment="Left"/>
 
                 </Grid>
             </TabItem>

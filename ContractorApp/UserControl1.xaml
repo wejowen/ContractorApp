@@ -15,6 +15,6 @@
         <ListBox Grid.Row="0" x:Name="List_Box_AvailableContractors">
             
         </ListBox>
-        <Button Click="Button_AssignContractor" Grid.Row="1" Content="Add Contractor"/>
+        <Button Click="Button_AssignContractor" Grid.Row="1" Content="Assign Contractor to Job"/>
     </Grid>
 </UserControl>

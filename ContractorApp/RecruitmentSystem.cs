@@ -7,9 +7,9 @@ using System.Windows;
 
 namespace ContractorApp
 {
-    class RecruitmentSystem
+    public class RecruitmentSystem
     {
-
+        //Lists
         List<Job> jobs = new List<Job>();
         List<Contractor> contractors = new List<Contractor>();
 
@@ -19,13 +19,14 @@ namespace ContractorApp
             jobs = new List<Job>();
         }
 
+        //Test data
         public void SetData()
         {
             contractors.Add(new Contractor("Jeremy", "Backster", DateTime.Parse("2023-01-01"), 20.00));
             contractors.Add(new Contractor("Holt", "Inthaname", DateTime.Parse("2023-06-15"), 25.33));
             contractors.Add(new Contractor("Baroque", "Worker", DateTime.Parse("2023-10-23"), 35.50));
             jobs.Add(new Job("Extermination", DateTime.Parse("2023-10-21"), 6000.30, false, ""));
-            jobs.Add(new Job("Contruction", DateTime.Parse("2023-12-31"), 4000.26, false, ""));
+            jobs.Add(new Job("Construction", DateTime.Parse("2023-12-31"), 4000.26, false, ""));
             jobs.Add(new Job("Cleaning", DateTime.Parse("2023-09-08"), 2000.41, false, ""));
         }
 
@@ -34,7 +35,7 @@ namespace ContractorApp
             Contractor newContractor = new Contractor(firstName, lastName, startDate, hourlyWage);
             contractors.Add(newContractor);
         }
-
+        //Removes based on list position
         public void RemoveContractor(int contractorIndex)
         {
             if (contractorIndex >= 0 && contractorIndex < contractors.Count)
@@ -42,18 +43,18 @@ namespace ContractorApp
                 contractors.RemoveAt(contractorIndex);
             }
         }
-
+        //Adds job 
         public void AddJob(string title, DateTime date, double cost, bool completed, string contractorAssigned)
         {
             Job newJob = new Job(title, date, cost, completed, contractorAssigned);
             jobs.Add(newJob);
         }
-
+        //Assigns job based on two list positions
         public string AssignJob(int jobIndex, int contractorIndex)
         {
             if (jobIndex >= 0 && jobIndex < jobs.Count && contractorIndex >= 0 && contractorIndex < contractors.Count)
             {
-                // Assign the contractor's full name to the ContractorAssigned property of the job.
+                // Assigning contractors name to the job
                 jobs[jobIndex].ContractorAssigned = $"{contractors[contractorIndex].FirstName} {contractors[contractorIndex].LastName}";
                 return "Assignment successful";
             }
@@ -62,7 +63,7 @@ namespace ContractorApp
                 return $"Assignment failed: Invalid indices {jobIndex} {contractorIndex}";
             }
         }
-
+        //Setting job completion to True
         public void CompleteJob(int jobIndex)
         {
             if (jobIndex >= 0 && jobIndex < jobs.Count)
@@ -71,7 +72,7 @@ namespace ContractorApp
                 jobs[jobIndex].ContractorAssigned = "";
             }
         }
-
+        //Returning contractors
         public List<Contractor> GetContractors()
         {
             return contractors;
@@ -84,7 +85,7 @@ namespace ContractorApp
             return jobs;
         }
 
-        //Makes a list of contractors based on contractors assigned to jobs, cross references, then returns only available contractors
+        //Returns only available contractors (by checking job assigned names). Used on the assign job button
         public List<Contractor> GetAvailableContractors()
         {
             List<Contractor> availableContractors = new List<Contractor>();
@@ -109,7 +110,7 @@ namespace ContractorApp
 
             return availableContractors;
         }
-
+        //Returns uncompleted and unassigned jobs, by checking whether or contractor assigned has any value, and is completed = false
         public List<Job> GetUnassignedJobs()
         {
             List<Job> jobsWithoutContractors = new List<Job>();
@@ -124,7 +125,7 @@ namespace ContractorApp
 
             return jobsWithoutContractors;
         }
-
+        //Checks for job costs between or equal to lowCost and highCost, returns the list 
         public List<Job> GetJobByCost(double lowCost, double highCost)
         {
             List<Job> matchingJobs = new List<Job>();

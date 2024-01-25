@@ -17,7 +17,7 @@ using System.Windows.Shapes;
 
 namespace ContractorApp
 {
-
+    //This was a mistake of a design choice for me. Took me longer than it should have to implement this and get it fully working. That said, I learnt a lot. 
     public partial class UserControl1 : UserControl
     {
 
@@ -33,6 +33,7 @@ namespace ContractorApp
             recruitmentSystem = mainRecruitmentSystem;
         }
 
+        //Checks available contractors, returns the list 
         internal void UpdateAvailableContractorsList(List<Contractor> availableContractors)
         {
             List<string> contractorsToHire = new List<string>();
@@ -46,11 +47,10 @@ namespace ContractorApp
 
             List_Box_AvailableContractors.ItemsSource = contractorsToHire;
         }
-    //
+        //Assigns job based on list index 
         private void Button_AssignContractor(object sender, RoutedEventArgs e)
         {
 
-            // Get the selected index from the ListBox
             int selectedContractorIndex = List_Box_AvailableContractors.SelectedIndex;
 
             if (selectedContractorIndex >= 0 && selectedJobIndex >= 0)
